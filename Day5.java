@@ -12,11 +12,9 @@ public class Day5 {
     static void readStacks(Scanner fs) {
         while (true) {
             String line = fs.nextLine();
-            if (line.length() == 0) {
-                return; // Blank line between stacks and moves.
-            }
-            if (line.charAt(1) == '1') {
-                continue; // Just the stack numbers, don't process this line.
+            if (line.charAt(1) == '1') { // Just the stack numbers, don't process this line.
+                fs.nextLine(); // Read a blank line after this line
+                return; 
             }
             int stackIndex = 0;
             for (int i = 1; i < line.length(); i += 4, stackIndex++) {
