@@ -7,7 +7,7 @@ public class main {
 //        Day2.go();
 //        Day3.go();
 //        Day4.go();
-//        Day5.go();
+        Day5.go();
         Day6.go();
         Day7.go();
 //        Day8.go();
