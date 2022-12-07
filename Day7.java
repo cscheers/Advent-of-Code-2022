@@ -31,7 +31,7 @@ public class Day7 {
             String line = fs.nextLine();
             String[] tokens = line.split(" ");
             if (tokens[0].equals("$")) {
-                if (tokens[1].equals("ls")) {
+                if (tokens.length == 2) { // ls
                 } else if (tokens[2].equals("..")) { // cd up one level
                     current = current.parent;
                 } else if (tokens[2].equals("/")) { // cd root
@@ -39,38 +39,33 @@ public class Day7 {
                 } else { // cd subdir
                     current = new Directory(tokens[2], current);
                 }
-            } else if (tokens[0].equals("dir")) {
-                // ls a dir
-            } else {
-                // ls a file
+            } else if (tokens[0].equals("dir")) { // ls a dir
+            } else { // ls a file
                 current.size += Integer.valueOf(tokens[0]);
             }
         }
     }
 
     static int getDirSize(Directory dir) {
-        int size = dir.size;
         for (Directory subDir : dir.subDirs) {
-            size  += getDirSize(subDir);
+            dir.size  += getDirSize(subDir);
         }
-        if (size <= 100000) {
-            total += size;
+        if (dir.size <= 100000) {
+            total += dir.size;
         }
-        return size;
+        return dir.size;
     }
 
-    static int getFreeDir(Directory dir, int freeAtLeast) {
-        int size = dir.size;
+    static void getFreeDir(Directory dir, int freeAtLeast) {
         for (Directory subDir : dir.subDirs) {
-            size  += getFreeDir(subDir, freeAtLeast);
+            getFreeDir(subDir, freeAtLeast);
         }
-        if (size > freeAtLeast) {
-            System.out.println("Candidate dir: " + dir.name + ", size: " + size);
-            if (free == 0 || size < free) {
-                free = size;
+        if (dir.size > freeAtLeast) {
+            System.out.println("Candidate dir: " + dir.name + ", size: " + dir.size);
+            if (free == 0 || dir.size < free) {
+                free = dir.size;
             }
         }
-        return size;
     }
 
     public static void go() throws FileNotFoundException {
