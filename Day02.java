@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Day2 {
+public class Day02 {
 
     static void readFile(File file) throws FileNotFoundException {
         Scanner fs = new Scanner(file);

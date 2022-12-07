@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Queue;
 import java.util.PriorityQueue;
 
-public class Day1 {
+public class Day01 {
 
     static void readFile(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);

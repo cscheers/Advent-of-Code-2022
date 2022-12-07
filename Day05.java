@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
-public class Day5 {
+public class Day05 {
 
     static List<LinkedList<Character>> stacks;
 

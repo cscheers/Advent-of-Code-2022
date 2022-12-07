@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.LinkedList;
 
-public class Day7 {
+public class Day07 {
 
     static Directory root = new Directory("/", null);
     static int total = 0, free = 0;

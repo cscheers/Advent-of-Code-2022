@@ -3,13 +3,13 @@ import java.io.FileNotFoundException;
 public class main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Day1.go();
-//        Day2.go();
+        Day01.go();
+//        Day02.go();
 //        Day3.go();
 //        Day4.go();
-        Day5.go();
-        Day6.go();
-        Day7.go();
+        Day05.go();
+        Day06.go();
+        Day07.go();
 //        Day8.go();
 //        Day9.go();
 //        Day10.go();
