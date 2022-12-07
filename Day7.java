@@ -56,12 +56,14 @@ public class Day7 {
         return dir.size;
     }
 
-    static void getFreeDir(Directory dir, int freeAtLeast) {
+    static void getFreeDir(Directory dir, int freeAtLeast, boolean verbose) {
         for (Directory subDir : dir.subDirs) {
-            getFreeDir(subDir, freeAtLeast);
+            getFreeDir(subDir, freeAtLeast, verbose);
         }
         if (dir.size > freeAtLeast) {
-            System.out.println("Candidate dir: " + dir.name + ", size: " + dir.size);
+            if (verbose) {
+                System.out.println("Candidate dir: " + dir.name + ", size: " + dir.size);
+            }
             if (free == 0 || dir.size < free) {
                 free = dir.size;
             }
@@ -69,13 +71,13 @@ public class Day7 {
     }
 
     public static void go() throws FileNotFoundException {
-        System.out.println("Day 7");
+        System.out.println("=> Day 7");
         readFile(new File("data/day7.txt"));
         int unused = 70000000 - getDirSize(root);
         System.out.println("Sum of directories with total size of at most 100000: " + total);
         int freeAtLeast = 30000000 - unused;
         System.out.println("Need to free up at least: " + freeAtLeast);
-        getFreeDir(root, freeAtLeast);
+        getFreeDir(root, freeAtLeast, false);
         System.out.println("Free one directory with size: " + free);
     }
 }

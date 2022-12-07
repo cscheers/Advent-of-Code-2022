@@ -20,7 +20,7 @@ public class Day2 {
     }
 
     public static void go() throws FileNotFoundException {
-        System.out.println("Day 7");
+        System.out.println("=> Day 2");
         readFile(new File("data/day2.txt"));
         play();
     }
