@@ -4,7 +4,7 @@ public class main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Day01.go();
-//        Day02.go();
+        Day02.go();
 //        Day3.go();
 //        Day4.go();
         Day05.go();
