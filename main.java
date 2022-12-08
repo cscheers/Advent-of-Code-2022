@@ -6,11 +6,11 @@ public class main {
 //        Day01.go();
 //        Day02.go();
 //        Day3.go();
-//        Day4.go();
+        Day04.go();
 //        Day05.go();
 //        Day06.go();
 //        Day07.go();
-        Day08.go();
+//        Day08.go();
 //        Day9.go();
 //        Day10.go();
 //        Day11.go();
