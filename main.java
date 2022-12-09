@@ -5,13 +5,13 @@ public class main {
     public static void main(String[] args) throws FileNotFoundException {
 //        Day01.go();
 //        Day02.go();
-//        Day3.go();
-        Day04.go();
+//        Day03.go();
+//        Day04.go();
 //        Day05.go();
 //        Day06.go();
 //        Day07.go();
 //        Day08.go();
-//        Day9.go();
+        Day09.go();
 //        Day10.go();
 //        Day11.go();
 //        Day12.go();
