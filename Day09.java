@@ -32,39 +32,35 @@ public class Day09 {
                 tail.x--;
                 return true;
             }
-        } else { // Needs diagonal move
-            if (head.x - tail.x == 2 ||
-                tail.x - head.x == 2) {
-                if (head.x - tail.x == 2) { // Move tail right
-                    tail.x++;
-                } else { // Move tail left
-                    tail.x--;
-                }
-                if (head.y > tail.y) { // Move tail up
-                    tail.y++;
-                } else { // Move tail down
-                    tail.y--;
-                }
-                return true;
-           } else if (head.y - tail.y == 2 ||
-                      tail.y - head.y == 2) {
-                if (head.y - tail.y == 2) { // Move tail up
-                    tail.y++;
-                } else { // Move tail down
-                    tail.y--;
-                }
-                if (head.x > tail.x) { // Move tail right
-                    tail.x++;
-                } else { // Move tail left
-                    tail.x--;
-                }
-                return true;
+        } else if (Math.abs(head.x - tail.x) == 2) { // Diagonal move
+            if (head.x - tail.x == 2) { // Move tail right
+                tail.x++;
+            } else { // Move tail left
+                tail.x--;
             }
+            if (head.y > tail.y) { // Move tail up
+                tail.y++;
+            } else { // Move tail down
+                tail.y--;
+            }
+            return true;
+        } else if (Math.abs(head.y - tail.y) == 2) { // Diagonal move
+            if (head.y - tail.y == 2) { // Move tail up
+                tail.y++;
+            } else { // Move tail down
+                tail.y--;
+            }
+            if (head.x > tail.x) { // Move tail right
+                tail.x++;
+            } else { // Move tail left
+                tail.x--;
+            }
+            return true;
         }
         return false;
     }
 
-    static boolean move(Point[] rope, String direction, int steps) {
+    static void move(Point[] rope, String direction, int steps) {
         for (int step = 0; step < steps; step++) {
             Point head = rope[0];
             switch (direction) {
@@ -83,17 +79,12 @@ public class Day09 {
             }
             for (int knot = 1; knot < rope.length; knot++) {
                 Point tail = rope[knot];
-                if (follow(head, tail)) {
-                    if (knot == rope.length - 1) {
-                        addTailVisit(tail);
-                    }
+                if (follow(head, tail) && knot == rope.length - 1) {
+                    addTailVisit(tail);
                 }
                 head = tail;
             }
-            Point tail = rope[rope.length - 1];
-//            System.out.println("===> head: " + head + ", tail: " + tail);
         }
-        return true;
     }
 
     static void readFile(File file, int knots) throws FileNotFoundException {
@@ -111,11 +102,9 @@ public class Day09 {
             String[] tokens = line.split(" ");
             String direction = tokens[0];
             int steps = Integer.valueOf(tokens[1]);
-//            System.out.println("===> Move: " + direction + ", steps: " + steps);
-            if (!move(rope, direction, steps)) {
-                break;
-            }
+            move(rope, direction, steps);
         }
+        System.out.println("Rope with " + knots + " knots.");
         System.out.println("Number of tail visits: " + tailVisits);
         System.out.println("Number of tail positions: " + positions.size());
     }
