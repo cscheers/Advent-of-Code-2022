@@ -13,8 +13,8 @@ public class main {
 //        Day08.go();
 //        Day09.go();
 //        Day10.go();
-        Day11.go();
-//        Day12.go();
+//        Day11.go();
+        Day12.go();
 //        Day13.go();
 //        Day14.go();
 //        Day15.go();
