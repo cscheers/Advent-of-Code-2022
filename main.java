@@ -11,9 +11,9 @@ public class main {
 //        Day06.go();
 //        Day07.go();
 //        Day08.go();
-        Day09.go();
-        Day10.go();
-//        Day11.go();
+//        Day09.go();
+//        Day10.go();
+        Day11.go();
 //        Day12.go();
 //        Day13.go();
 //        Day14.go();
