@@ -87,8 +87,8 @@ public class Day12 {
     public static void go() throws FileNotFoundException {
         System.out.println("=> Day 12");
         Point start = readFile(new File("data/day12.txt"));
-        System.out.println("Start: " + start);
-        System.out.println("End: " + end);
+//        System.out.println("Start: " + start);
+//        System.out.println("End: " + end);
         System.out.println("Grid: " + area.get(0).length + ", " + area.size());
         List<Point> starts = findStartingPoints();
         System.out.println("Number of starting points: " + starts.size());
