@@ -10,43 +10,20 @@ import java.awt.Point;
 
 public class Day14 {
 
+    static Map<Integer, List<Point>> horizontal, vertical;
+    static int maxY = 0;
+
     static Point createInterval(int from, int to) {
         return from < to ? new Point(from, to) : new Point(to, from);
-    }
-
-    static boolean overlaps(Point first, Point second) {
-        return first.x <= second.x && first.y >= second.x ||
-               first.x >= second.x && first.x <= second.y;
     }
 
     static void addInterval(Map<Integer, List<Point>> levels, int level, int from, int to) {
         if (!levels.containsKey(level)) {
             levels.put(level, new ArrayList<Point>());
         }
-        Point newInterval = createInterval(from, to);
         List<Point> intervals = levels.get(level);
-        for (Point interval : intervals) {
-            if (overlaps(newInterval, interval)) {
-                if (newInterval.x >= interval.x && newInterval.y <= interval.y) {
-                    return; // Interval already included, don't add it.
-                } else if (newInterval.x == interval.y ) {
-                    interval.y = newInterval.y; // Concatenate intervals
-                    return;
-                } else if (newInterval.y == interval.y ) { // Same y
-                    if (newInterval.x < interval.x) {
-                        interval.x = newInterval.x; // Take the larger x
-                    }
-                    return;
-                } else {
-                    System.out.println("Overlapping interval --> " + newInterval + ", " + interval);
-                }
-            }
-        }
-        intervals.add(newInterval);
+        intervals.add(createInterval(from, to));
     }
-
-    static Map<Integer, List<Point>> horizontal, vertical;
-    static int maxY = 0;
 
     static void readFile(File file) throws FileNotFoundException {
         horizontal = new TreeMap<Integer, List<Point>>();
