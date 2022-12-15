@@ -15,12 +15,11 @@ public class Day15 {
     static Set<Integer> beacons = new HashSet<Integer>();
     static Set<Integer> noBeacon = new HashSet<Integer>();
 
-    static int boundary = 4000000; // 20
+    static int boundary = 4000000;
     static List<List<Point>> space = new ArrayList<List<Point>>();
 
     static void processSensorPartOne(Point sensor, Point beacon) {
         if (beacon.y == selectedY) {
-            System.out.println("Adding beacon at: " + beacon.x);
             beacons.add(beacon.x);
         }
         int distance = Math.abs(beacon.x - sensor.x) + Math.abs(beacon.y - sensor.y);
@@ -35,7 +34,6 @@ public class Day15 {
     }
 
     static void exclude(int y, int left, int right) {
-//        System.out.println("At Y: " + y + ", exclude (" + left + ", " + right + ")");    
         if (y < 0 || y >= space.size()) {
             return;
         }
@@ -123,7 +121,6 @@ public class Day15 {
         noBeacon.removeAll(beacons);
         System.out.println("Number of non-beacon positions in row (" + selectedY + "): "  + noBeacon.size());
         System.out.println("Tuning frequency: " + getTuningFrequency());
-        ;
     }
 
     public static void go() throws FileNotFoundException {
