@@ -60,15 +60,13 @@ public class Day16 {
         Set<String> accounted = new HashSet<String>();
         Map<String, Integer> distances = new HashMap<String, Integer>();
         distances.put(src, 0);
-        String current = src;
-        while (current != null) {
-            Valve currentValve = valves.get(current);
-            for (String next : currentValve.next) {
-                Valve nextValve = valves.get(next);
+        String valve = src;
+        while (valve != null) {
+            for (String next : valves.get(valve).next) {
                 if (accounted.contains(next)) {
                     continue; // Shortest path to here already known.
                 }
-                int toCurrent = distances.get(current);
+                int toCurrent = distances.get(valve);
                 if (distances.containsKey(next)) {
                     int toNext = distances.get(next);
                     if (toCurrent + 1 >= toNext) {
@@ -77,14 +75,14 @@ public class Day16 {
                 }                
                 distances.put(next, toCurrent + 1);
             }
-            accounted.add(current); // All nbrs of current have been visited.
-            current = findNextValve(accounted, distances);
+            accounted.add(valve); // All nbrs of current have been visited.
+            valve = findNextValve(accounted, distances);
         }
         distances.remove(src); // Exclude node itself
         Set<String> zeros = new HashSet<String>();
-        for (String valve : distances.keySet()) {
-            if (valves.get(valve).rate == 0) {
-                zeros.add(valve);
+        for (String v : distances.keySet()) {
+            if (valves.get(v).rate == 0) {
+                zeros.add(v);
             }
         }
         distances.keySet().removeAll(zeros); // Remove all zero rate valves
